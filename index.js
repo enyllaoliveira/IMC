@@ -7,39 +7,20 @@ const button = document.getElementById('btn')
 
 button.classList.add('disabled')
 button.style.pointerEvents = 'none'
-initial()
+nameInf.addEventListener('keyup', validate) 
+weight.addEventListener('keyup', validate) 
+height.addEventListener('keyup', validate) 
+validate()
 
-function initial() {
-nameInf.addEventListener('keyup', (e) => {
-if (e.target.value != '') {
-  button.classList.remove('disabled')
-  button.removeAttribute('style')
-} else {
-  button.classList.add('disabled')
-  button.style.pointerEvents = 'none'
-}
-})
-
-weight.addEventListener('keyup', (e) => {
-  if (e.target.value != '') {
-    button.classList.remove('disabled')
-    button.removeAttribute('style')
-  } else {
-    button.classList.add('disabled')
-    button.style.pointerEvents = 'none'
-  }
-  })
-
-  height.addEventListener('keyup', (e) => {
-    if (e.target.value != '') {
+function validate () {
+    if(nameInf.value != '' && weight.value != 0 && height.value != 0) {
       button.classList.remove('disabled')
       button.removeAttribute('style')
     } else {
       button.classList.add('disabled')
       button.style.pointerEvents = 'none'
-    }
-    })
-  }
+}
+}
 
 button.addEventListener('click', calcular)
 function calcular() {
