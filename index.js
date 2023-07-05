@@ -1,67 +1,67 @@
-let nome = document.getElementById('inf-name')
-let peso = document.getElementById('inf-peso')
-let alt = document.getElementById('inf-alt')
+let nameInf = document.getElementById('inf-name')
+let weight = document.getElementById('inf-peso')
+let height = document.getElementById('inf-alt')
 let containerInf = document.getElementById("rodape")
-const botao = document.getElementById('btn')
+const button = document.getElementById('btn')
 
-botao.classList.add('disabled')
-botao.style.pointerEvents = 'none'
+
+button.classList.add('disabled')
+button.style.pointerEvents = 'none'
 initial()
 
 function initial() {
-nome.addEventListener('keyup', (e) => {
+nameInf.addEventListener('keyup', (e) => {
 if (e.target.value != '') {
-  botao.classList.remove('disabled')
-  botao.removeAttribute('style')
+  button.classList.remove('disabled')
+  button.removeAttribute('style')
 } else {
-  botao.classList.add('disabled')
-  botao.style.pointerEvents = 'none'
+  button.classList.add('disabled')
+  button.style.pointerEvents = 'none'
 }
 })
 
-peso.addEventListener('keyup', (e) => {
+weight.addEventListener('keyup', (e) => {
   if (e.target.value != '') {
-    botao.classList.remove('disabled')
-    botao.removeAttribute('style')
+    button.classList.remove('disabled')
+    button.removeAttribute('style')
   } else {
-    botao.classList.add('disabled')
-    botao.style.pointerEvents = 'none'
+    button.classList.add('disabled')
+    button.style.pointerEvents = 'none'
   }
   })
 
-  alt.addEventListener('keyup', (e) => {
+  height.addEventListener('keyup', (e) => {
     if (e.target.value != '') {
-      botao.classList.remove('disabled')
-      botao.removeAttribute('style')
+      button.classList.remove('disabled')
+      button.removeAttribute('style')
     } else {
-      botao.classList.add('disabled')
-      botao.style.pointerEvents = 'none'
+      button.classList.add('disabled')
+      button.style.pointerEvents = 'none'
     }
     })
   }
 
-botao.addEventListener('click', calcular)
+button.addEventListener('click', calcular)
 function calcular() {
-  console.log(peso, alt)
-  let pesoConvertido = Number(peso.value)
-  let altConvertido = Number(alt.value)
-    let imc = (((pesoConvertido * 100) / ((altConvertido * altConvertido / 100)))).toFixed(2)
-    let situacao = ''
+  let weightConvertido = Number(weight.value)
+  let heightConvertido = Number(height.value)
+    let imc = (((weightConvertido * 100) / ((heightConvertido * heightConvertido / 100)))).toFixed(2)
+    let situation = ''
 
     if (imc  < 18.5) {
-      situacao = 'magreza'
+      situation = 'magreza'
     } else if (imc > 18.5 && imc < 24.9) {
-      situacao = 'normal'
+      situation = 'normal'
     } else if ( imc > 25 && imc < 29.9 ) {
-    situacao = 'sobrepeso I'
+      situation = 'sobrepeso I'
     } else if (imc > 30 && imc < 39.9) {
-    situacao = 'obesidade I'
+      situation = 'obesidade I'
     } else {
-      situacao = 'grave III'
+      situation = 'grave III'
     }
-      containerInf.innerHTML = `<p> Olá, ${nome.value}.</p> 
+      containerInf.innerHTML = `<p> Olá, ${nameInf.value}.</p> 
      <p> Seu IMC atual é de ${imc}</p>
-     <p>  Sua situação é de ${situacao} </p>`
+     <p>  Sua situação é de ${situation} </p>`
     }
 
 
